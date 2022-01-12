@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "770519388977",
+    "project_id": "petnet-1f56e",
+    "storage_bucket": "petnet-1f56e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770519388977:android:b5046bba4a834cdbf29610",
+        "android_client_info": {
+          "package_name": "com.naestem.petnet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770519388977-couemgeb5j9nlcar5sorhncr3l46p6o6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPbh4G3Q095-p87rBIzSWst3aPGRcebzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770519388977-couemgeb5j9nlcar5sorhncr3l46p6o6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
