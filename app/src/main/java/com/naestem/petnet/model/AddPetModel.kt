@@ -8,5 +8,8 @@ data class AddPetModel(
     val images: ArrayList<String>? = null,
     val age: String? = null,
     val forAdoption: Boolean? = null,
-    val price: String? = null
+    val price: String? = null,
+    var createdBy: String? = null,
+    val createdAt: Long? = null,
+    val updatedAt: Long? = null
 )

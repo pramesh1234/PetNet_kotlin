@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.24722222222222223" />
         <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/layout/activity_add_pet.xml" value="0.25" />
         <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/layout/activity_home.xml" value="0.25" />
@@ -14,6 +15,7 @@
         <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/layout/activity_splash.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/layout/item_image.xml" value="0.25" />
+        <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/layout/item_pet.xml" value="0.25" />
         <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/layout/loader.xml" value="0.20092592592592592" />
         <entry key="..\:/Users/91626/AndroidStudioProjects/PetNet/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
       </map>

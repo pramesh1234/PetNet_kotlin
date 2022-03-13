@@ -7,6 +7,7 @@ class AppConstants {
         const val FULL_NAME = "fullName"
         const val PASSWORD = "password"
         const val DOC = "doc"
+        const val PET_DATA = "petData"
         const val BARTER = "barter"
         const val USER = "user"
         const val ADDRESS = "address"
