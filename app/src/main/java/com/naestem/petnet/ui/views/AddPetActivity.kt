@@ -28,7 +28,6 @@ import com.naestem.petnet.model.AddressModel
 import com.naestem.petnet.model.ErrorModel
 import com.naestem.petnet.ui.viewmodel.AddPetViewModel
 import java.util.*
-import kotlin.collections.ArrayList
 
 class AddPetActivity : MyBaseCompatActivity() {
     private lateinit var binding: ActivityAddPetBinding
@@ -38,10 +37,10 @@ class AddPetActivity : MyBaseCompatActivity() {
     var breed: String? = null
     var age: String? = null
     var description: String? = null
-    var location:String?=null
+    var location: String? = null
     var price: String? = null
     var errorMsg: String? = null
-    var addressModel:AddressModel?=null
+    var addressModel: AddressModel? = null
 
     val viewModel by lazy {
         ViewModelProvider(this)[AddPetViewModel::class.java]
@@ -58,14 +57,26 @@ class AddPetActivity : MyBaseCompatActivity() {
     }
 
     override fun initObservers() {
-        viewModel.imageUrlListLiveData.observe(this, {
-                   val petModel = AddPetModel(species,breed,addressModel,description,it,age,adoption,price,null,System.currentTimeMillis(),System.currentTimeMillis())
+        viewModel.imageUrlListLiveData.observe(this) {
+            val petModel = AddPetModel(
+                species,
+                breed,
+                addressModel,
+                description,
+                it,
+                age,
+                adoption,
+                price,
+                null,
+                System.currentTimeMillis(),
+                System.currentTimeMillis()
+            )
             viewModel.addPet(petModel)
-        })
-        viewModel.petDataAdded.observe(this,{
+        }
+        viewModel.petDataAdded.observe(this) {
             showSnackBar("Data added.")
-        })
-        viewModel.locationLiveData.observe(this,{
+        }
+        viewModel.locationLiveData.observe(this) {
             val addresses: List<Address>
             val geocoder = Geocoder(this, Locale.getDefault());
 
@@ -73,16 +84,17 @@ class AddPetActivity : MyBaseCompatActivity() {
                 it.latitude,
                 it.longitude,
                 1
-            ); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            ) as List<Address>; // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
             val address =
                 addresses[0].getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+
             val city = addresses[0].locality;
             val state = addresses[0].adminArea;
             val country = addresses[0].countryName;
             val postalCode = addresses[0].postalCode;
             val subLocality = addresses[0].subLocality
-             addressModel = AddressModel(
+            addressModel = AddressModel(
                 subLocality,
                 postalCode,
                 city,
@@ -91,9 +103,9 @@ class AddPetActivity : MyBaseCompatActivity() {
                 it.longitude,
                 it.latitude
             )
-            location="$subLocality, $city"
+            location = "$subLocality, $city"
             binding.locationTV.text = location
-        })
+        }
     }
 
     override fun onErrorCalled(it: ErrorModel?) {
@@ -159,14 +171,14 @@ class AddPetActivity : MyBaseCompatActivity() {
             selectImage()
         }
         binding.submitBtn.setOnClickListener {
-            breed=binding.breedET.text.toString()
-            price=binding.priceET.text.toString()
-            age=binding.ageET.text.toString()
-            description=binding.descriptionET.text.toString()
-            species=binding.speciesAutoCompleteTV.text.toString()
-            if(validateTheForm()) {
+            breed = binding.breedET.text.toString()
+            price = binding.priceET.text.toString()
+            age = binding.ageET.text.toString()
+            description = binding.descriptionET.text.toString()
+            species = binding.speciesAutoCompleteTV.text.toString()
+            if (validateTheForm()) {
                 viewModel.addPetPhotos(imageList!!)
-            }else{
+            } else {
                 showSnackBar(errorMsg!!)
             }
         }
@@ -217,10 +229,10 @@ class AddPetActivity : MyBaseCompatActivity() {
                 errorMsg = "Please enter the price"
                 return false
             }
-        } else if (imageList==null && imageList?.size==0) {
+        } else if (imageList == null && imageList?.size == 0) {
             errorMsg = "Please select the images"
             return false
-        }else if (!FormValidator.requiredField(location,1)) {
+        } else if (!FormValidator.requiredField(location, 1)) {
             errorMsg = "Please add location"
             return false
         }

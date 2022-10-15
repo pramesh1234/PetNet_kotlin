@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.auth.SignUpFragment">
+
+    <ImageView
+        android:id="@+id/backBtnIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20x"
+        android:background="@drawable/dim_primary_bg"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTV"
+        style="@style/TextAppearance.PetNet.Headline5.PoppinsBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20x"
+        android:text="@string/login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backBtnIV" />
+
+    <ImageView
+        android:id="@+id/loginIV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTV" />
+
+    <TextView
+        android:id="@+id/emailTV"
+        style="@style/TextAppearance.PetNet.Body1.PoppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20x"
+        android:text="@string/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginIV" />
+
+    <EditText
+        android:id="@+id/emailET"
+        style="@style/Widget.PetNet.EditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_60x"
+        android:hint="@string/type_here"
+        android:inputType="textWebEmailAddress"
+        android:paddingStart="@dimen/size_12x"
+        android:paddingEnd="@dimen/size_12x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailTV"
+        tools:text="prameshsingh2411@gmail.com" />
+
+    <TextView
+        android:id="@+id/passwordTV"
+        style="@style/TextAppearance.PetNet.Body1.PoppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20x"
+        android:text="@string/password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailET" />
+
+    <EditText
+        android:id="@+id/passwordET"
+        style="@style/Widget.PetNet.EditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_60x"
+        android:hint="@string/type_here"
+        android:inputType="textWebPassword"
+        android:paddingStart="@dimen/size_12x"
+        android:paddingEnd="@dimen/size_12x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordTV"
+        tools:text="prameshsingh2411@gmail.com" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginBtn"
+        style="@style/Widget.PetNet.MaterialButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_24x"
+        android:text="@string/login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordET" />
+
+    <TextView
+        android:id="@+id/forgotPasswordTV"
+        style="@style/TextAppearance.PetNet.Body1.PoppinsSemiBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_4x"
+        android:text="@string/forgot_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginBtn" />
+
+    <TextView
+        android:id="@+id/dontHaveAccountTV"
+        style="?attr/textAppearanceBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_24x"
+        android:text="@string/don_t_have_an_account_sign_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forgotPasswordTV" />
+</androidx.constraintlayout.widget.ConstraintLayout>

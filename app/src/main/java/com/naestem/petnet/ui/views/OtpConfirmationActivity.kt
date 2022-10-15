@@ -41,27 +41,27 @@ class OtpConfirmationActivity : MyBaseCompatActivity() {
     }
 
     override fun initObservers() {
-        viewModel.phoneAuthSuccessLiveData.observe(this, {
+        viewModel.phoneAuthSuccessLiveData.observe(this) {
             viewModel.signUp(email, password)
-        })
-        viewModel.signUpSuccessLiveData.observe(this, {
+        }
+        viewModel.signUpSuccessLiveData.observe(this) {
             val user = UserData(
                 auth.uid!!,
                 fullName,
                 email,
                 phoneNumber,
                 password,
-             null,
+                null,
                 false,
                 true
             )
             viewModel.saveUser(user)
-        })
-        viewModel.userSavedSuccessLiveData.observe(this, {
+        }
+        viewModel.userSavedSuccessLiveData.observe(this) {
             val intent = Intent(this@OtpConfirmationActivity, HomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-        })
+        }
     }
 
     override fun onErrorCalled(it: ErrorModel?) {

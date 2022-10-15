@@ -13,39 +13,144 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/headerCL"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/size_8x"
                 android:text="@string/hello_blank_fragment"
-                app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
+                style="@style/TextAppearance.PetNet.Body1.PoppinsMedium.Black"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:drawableStartCompat="@drawable/ic_ep_location"
+                app:drawableEndCompat="@drawable/ic_down_outlined" />
+            <EditText
+                android:id="@+id/searchET"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_56x"
+                style="@style/Widget.PetNet.EditText.Search"
+                app:layout_constraintStart_toStartOf="parent"
+                android:hint="Search Your Pet Here"
+                android:paddingStart="@dimen/size_12x"
+                android:layout_marginTop="@dimen/size_24x"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/size_24x"
+                app:layout_constraintTop_toBottomOf="@id/location"
+                />
+            <TextView
+                android:id="@+id/categoriesTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/searchET"
+                style="@style/TextAppearance.PetNet.Headline5.PoppinsBold"
+                android:layout_marginTop="@dimen/size_12x"/>
+<ImageView
+    android:id="@+id/dogIV"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_dog"
+    android:padding="@dimen/size_12x"
+    android:layout_marginTop="@dimen/size_8x"
+    android:background="@drawable/categories_bg"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/catIV"
+    app:layout_constraintTop_toBottomOf="@id/categoriesTV"/>
+            <TextView
+                android:id="@+id/dogTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/dogIV"
+                app:layout_constraintEnd_toEndOf="@id/dogIV"
+                app:layout_constraintTop_toBottomOf="@id/catIV"
+                style="@style/TextAppearance.PetNet.Body2.PoppinsMedium"
+                android:text="Dogs"/>
+            <ImageView
+                android:id="@+id/catIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cat"
+                android:padding="@dimen/size_12x"
+                android:background="@drawable/categories_bg"
+                app:layout_constraintStart_toEndOf="@id/dogIV"
+                app:layout_constraintEnd_toStartOf="@id/birdIV"
+                android:layout_marginTop="@dimen/size_8x"
+
+                app:layout_constraintTop_toBottomOf="@id/categoriesTV"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/catIV"
+                app:layout_constraintEnd_toEndOf="@id/catIV"
+                app:layout_constraintTop_toBottomOf="@id/catIV"
+                style="@style/TextAppearance.PetNet.Body2.PoppinsMedium"
+                android:text="Cats"/>
+            <ImageView
+                android:id="@+id/birdIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bird"
+                android:padding="@dimen/size_12x"
+                android:background="@drawable/categories_bg"
+                app:layout_constraintStart_toEndOf="@id/catIV"
+                app:layout_constraintEnd_toStartOf="@id/fishIV"
+                android:layout_marginTop="@dimen/size_8x"
+
+                app:layout_constraintTop_toBottomOf="@id/categoriesTV"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/birdIV"
+                app:layout_constraintEnd_toEndOf="@id/birdIV"
+                app:layout_constraintTop_toBottomOf="@id/birdIV"
+                style="@style/TextAppearance.PetNet.Body2.PoppinsMedium"
+                android:text="Birds"/>
+            <ImageView
+                android:id="@+id/fishIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fish"
+                android:padding="@dimen/size_12x"
+                android:background="@drawable/categories_bg"
+                android:layout_marginTop="@dimen/size_8x"
+                app:layout_constraintStart_toEndOf="@id/birdIV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/categoriesTV"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/fishIV"
+                app:layout_constraintEnd_toEndOf="@id/fishIV"
+                app:layout_constraintTop_toBottomOf="@id/fishIV"
+                style="@style/TextAppearance.PetNet.Body2.PoppinsMedium"
+                android:text="Fish"/>
+            <TextView
+                android:id="@+id/recentTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recently added pets"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dogTV"
+                style="@style/TextAppearance.PetNet.Headline5.PoppinsBold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/size_12x"
+                android:layout_marginTop="@dimen/size_12x"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/petRV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerCL"
             android:layout_marginBottom="?attr/actionBarSize"
-            />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addPetBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="70dp"
-            android:layout_marginEnd="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@id/headerCL" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.auth.SignUpFragment">
+
+    <ImageView
+        android:id="@+id/backBtnIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20x"
+        android:background="@drawable/dim_primary_bg"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTV"
+        style="@style/TextAppearance.PetNet.Headline5.PoppinsBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20x"
+        android:text="@string/phone_verification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backBtnIV" />
+
+    <ImageView
+        android:id="@+id/loginIV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/phone_verification_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTV" />
+
+    <TextView
+        android:id="@+id/phoneNoTV"
+        style="@style/TextAppearance.PetNet.Body1.PoppinsMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_60x"
+        android:text="@string/enter_6_digit_verification_that_sent"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginIV" />
+
+    <EditText
+        android:id="@+id/firstCodeET"
+        style="@style/Widget.PetNet.EditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_20x"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/size_4x"
+        android:paddingStart="@dimen/size_20x"
+        android:paddingEnd="@dimen/size_20x"
+        android:maxLength="1"
+        android:hint="@string/dash"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@id/secondCodeET"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phoneNoTV"
+       />
+
+    <EditText
+        android:id="@+id/secondCodeET"
+        style="@style/Widget.PetNet.EditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_20x"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="1"
+        android:hint="@string/dash"
+        android:paddingStart="@dimen/size_20x"
+        android:paddingEnd="@dimen/size_20x"
+        android:layout_marginEnd="@dimen/size_4x"
+        app:layout_constraintEnd_toStartOf="@id/thirdCodeET"
+        app:layout_constraintStart_toEndOf="@id/firstCodeET"
+        app:layout_constraintTop_toBottomOf="@id/phoneNoTV" />
+
+    <EditText
+        android:id="@+id/thirdCodeET"
+        style="@style/Widget.PetNet.EditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_20x"
+        android:gravity="center"
+        android:maxLength="1"
+        android:hint="@string/dash"
+        android:inputType="number"
+        android:layout_marginEnd="@dimen/size_4x"
+        android:paddingStart="@dimen/size_20x"
+        android:paddingEnd="@dimen/size_20x"
+        app:layout_constraintEnd_toStartOf="@id/fourthCodeET"
+        app:layout_constraintStart_toEndOf="@id/secondCodeET"
+        app:layout_constraintTop_toBottomOf="@id/phoneNoTV" />
+
+    <EditText
+        android:id="@+id/fourthCodeET"
+        style="@style/Widget.PetNet.EditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_20x"
+        android:gravity="center"
+        android:maxLength="1"
+        android:hint="@string/dash"
+        android:layout_marginEnd="@dimen/size_4x"
+        android:inputType="number"
+        android:paddingStart="@dimen/size_20x"
+        android:paddingEnd="@dimen/size_20x"
+        app:layout_constraintEnd_toStartOf="@id/fifthCodeET"
+        app:layout_constraintStart_toEndOf="@id/thirdCodeET"
+        app:layout_constraintTop_toBottomOf="@id/phoneNoTV"
+         />
+
+    <EditText
+        android:id="@+id/fifthCodeET"
+        style="@style/Widget.PetNet.EditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_20x"
+        android:gravity="center"
+        android:inputType="number"
+        android:hint="@string/dash"
+        android:layout_marginEnd="@dimen/size_4x"
+        android:paddingStart="@dimen/size_20x"
+        android:paddingEnd="@dimen/size_20x"
+        android:maxLength="1"
+        app:layout_constraintEnd_toStartOf="@id/sixthCodeET"
+        app:layout_constraintStart_toEndOf="@id/fourthCodeET"
+        app:layout_constraintTop_toBottomOf="@id/phoneNoTV"
+        />
+
+    <EditText
+        android:id="@+id/sixthCodeET"
+        style="@style/Widget.PetNet.EditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_20x"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/size_4x"
+        android:inputType="number"
+        android:maxLength="1"
+        android:hint="@string/dash"
+        android:paddingStart="@dimen/size_20x"
+        android:paddingEnd="@dimen/size_20x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fifthCodeET"
+        app:layout_constraintTop_toBottomOf="@id/phoneNoTV"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitBtn"
+        style="@style/Widget.PetNet.MaterialButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_30x"
+        android:text="@string/submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/firstCodeET" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,71 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/row_gb"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="4dp"
-    android:layout_marginEnd="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    app:cardCornerRadius="15dp">
+    android:layout_marginTop="@dimen/size_4x"
+    android:layout_marginBottom="@dimen/size_4x"
+    android:layout_height="wrap_content">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/petImageIV"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="2"
+        android:layout_height="@dimen/row_size"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dummy_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/detailCL"
+        app:riv_corner_radius_bottom_left="@dimen/size_12x"
+        app:riv_corner_radius_top_left="@dimen/size_12x" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/petImageIV"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/dummy_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="15dp" />
+        android:id="@+id/detailCL"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/row_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/petImageIV">
 
         <TextView
             android:id="@+id/petNameTV"
+            style="@style/TextAppearance.PetNet.Body1.PoppinsMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:layout_marginStart="@dimen/size_8x"
+            android:layout_marginTop="@dimen/size_8x"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/petImageIV"
-            tools:text="Boss Fitness" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Labrador" />
         <TextView
-            android:id="@+id/petTypeTV"
+            android:id="@+id/speciesTV"
+            style="@style/TextAppearance.PetNet.Body2.PoppinsMedium.SpicesColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:layout_marginStart="@dimen/size_8x"
+            tools:text="Dog"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/size_8x"
+            app:layout_constraintTop_toBottomOf="@id/priceTV"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/priceTV"
+            style="@style/TextAppearance.PetNet.Body1.PoppinsSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_8x"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/petNameTV"
-            tools:text="Dog" />
+            app:layout_constraintTop_toBottomOf="@id/petLocationTV"
+            android:text="₹10,000" />
+
         <TextView
             android:id="@+id/petLocationTV"
+            style="@style/TextAppearance.PetNet.Caption.PoppinsMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/petTypeTV"
-            tools:text="Kosabadi"
-            android:textSize="12sp"
+            android:layout_marginEnd="@dimen/size_8x"
+            app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="4dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
-        <androidx.cardview.widget.CardView
+            app:layout_constraintTop_toBottomOf="@id/petNameTV"
+            tools:text="Kosabadi" />
+        <TextView
+            android:id="@+id/sellerTV"
+            style="@style/TextAppearance.PetNet.Body2.PoppinsMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:cardCornerRadius="12sp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            >
-        </androidx.cardview.widget.CardView>
+            android:layout_marginStart="@dimen/size_8x"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/priceTV"
+            android:text="Virat's kennel" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

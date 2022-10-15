@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.PetNet.Headline5.PoppinsBold" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="TextAppearance.PetNet.Headline5.PoppinsLight" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="TextAppearance.PetNet.Headline6.PoppinsMedium.White" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+
+    <style name="TextAppearance.PetNet.Headline6.PoppinsMedium" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <!--body1-->
+    <style name="TextAppearance.PetNet.Body1.PoppinsRegular" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <style name="TextAppearance.PetNet.Body1.PoppinsMedium" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+    <style name="TextAppearance.PetNet.Body1.PoppinsMedium.Black" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextAppearance.PetNet.Body1.PoppinsSemiBold" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/poppins_semi_bold</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+    <style name="TextAppearance.PetNet.Body1.PoppinsSemiBold.Black" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/poppins_semi_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!--body2-->
+    <style name="TextAppearance.PetNet.Body2.PoppinsMedium.SpicesColor" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/species_color</item>
+    </style>
+    <style name="TextAppearance.PetNet.Body2.PoppinsMedium" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <!--caption-->
+    <style name="TextAppearance.PetNet.Caption.PoppinsMedium" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+</resources>

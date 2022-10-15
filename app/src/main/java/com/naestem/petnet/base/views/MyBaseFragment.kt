@@ -20,6 +20,7 @@ import com.naestem.petnet.R
 import com.naestem.petnet.base.viewmodels.MyBaseViewModel
 import com.naestem.petnet.helper.LoaderStatus
 import com.naestem.petnet.manager.SharedPrefManager
+import java.util.*
 
 abstract class MyBaseFragment : Fragment() {
     protected val TAG = this.javaClass.simpleName
@@ -41,7 +42,7 @@ abstract class MyBaseFragment : Fragment() {
         ) {
 
 
-        val color = ContextCompat.getColor(requireActivity(), R.color.purple_500)
+        val color = ContextCompat.getColor(requireActivity(), R.color.colorSecondary)
         // val doneBitmap = BitmapFactory.decodeResource(resources, R.drawable.wh)
 
         viewModel.isLoading.observe(viewLifecycleOwner, Observer {
@@ -58,14 +59,14 @@ abstract class MyBaseFragment : Fragment() {
                 var updatedErrorMessage: String? = null
                 if (it.message.contains("_")) {
                     updatedErrorMessage = it.message.replace("_", " ")
-                    showSnackbar(updatedErrorMessage.toLowerCase())
+                    showSnackBar(updatedErrorMessage.lowercase())
                 } else {
                     updatedErrorMessage = it.message
-                    showSnackbar(updatedErrorMessage.toLowerCase())
+                    showSnackBar(updatedErrorMessage.lowercase())
                 }
 
 
-                onErrorCalled(updatedErrorMessage.toLowerCase())
+                onErrorCalled(updatedErrorMessage.lowercase())
             }
         })
 
@@ -96,7 +97,7 @@ abstract class MyBaseFragment : Fragment() {
         activity?.let {
             val imm = it.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
             //Find the currently focused view, so we can grab the correct window token from it.
-            var view = it.getCurrentFocus()
+            var view = it.currentFocus
             //If no view currently has focus, create a new one, just so we can grab a window token from it
             if (view == null) {
                 view = View(it)
@@ -111,7 +112,7 @@ abstract class MyBaseFragment : Fragment() {
             val inputManager =
                 it.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             // check if no view has focus:
-            val view = it.getCurrentFocus()
+            val view = it.currentFocus
             view?.let {
                 inputManager.toggleSoftInputFromWindow(
                     view.windowToken,
@@ -123,24 +124,24 @@ abstract class MyBaseFragment : Fragment() {
     }
 
 
-    fun showSnackbar(text: String) {
-        val updatedMessgae: String = Html.fromHtml(text).toString()
+    fun showSnackBar(text: String) {
+        val updatedMessage: String = Html.fromHtml(text).toString()
 
         mBaseView?.let {
-            val snackbar = Snackbar.make(
+            val snackBar = Snackbar.make(
                 activity?.findViewById(android.R.id.content)!!,
-                updatedMessgae.capitalize(),
+                updatedMessage.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
                 Snackbar.LENGTH_LONG
             )
-            snackbar.setDuration(2200)
-            val snackbarView = snackbar.getView()
+            snackBar.duration = 2200
+            val snackBarView = snackBar.view
             activity?.let {
-                snackbarView.setBackgroundColor(ContextCompat.getColor(it, R.color.black))
+                snackBarView.setBackgroundColor(ContextCompat.getColor(it, R.color.colorPrimary))
 
-                val tv = snackbarView.findViewById(R.id.snackbar_text) as TextView
-                tv.setTextColor(ContextCompat.getColor(requireActivity(), R.color.black))
+                val tv = snackBarView.findViewById(R.id.snackbar_text) as TextView
+                tv.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white))
                 tv.gravity = Gravity.CENTER
-                snackbar.show()
+                snackBar.show()
             }
         }
 
@@ -152,13 +153,13 @@ abstract class MyBaseFragment : Fragment() {
         mBaseView?.let {
             val snackbar = Snackbar.make(
                 activity?.findViewById(android.R.id.content)!!,
-                updatedMessgae.capitalize(),
+                updatedMessgae.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
                 Snackbar.LENGTH_LONG
             )
-            snackbar.setDuration(duration)
-            val snackbarView = snackbar.getView()
+            snackbar.duration = duration
+            val snackbarView = snackbar.view
             activity?.let {
-                snackbarView.setBackgroundColor(ContextCompat.getColor(it, R.color.purple_500))
+                snackbarView.setBackgroundColor(ContextCompat.getColor(it, R.color.colorSecondary))
 
                 val tv = snackbarView.findViewById(R.id.snackbar_text) as TextView
                 tv.setTextColor(ContextCompat.getColor(requireActivity(), R.color.error))
@@ -210,12 +211,12 @@ abstract class MyBaseFragment : Fragment() {
             mAlertDialog.setCanceledOnTouchOutside(false)
             mAlertDialog.setCanceledOnTouchOutside(false)
 
-            mAlertDialog.setOnShowListener({
+            mAlertDialog.setOnShowListener {
                 context?.let {
                     mAlertDialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
                         .setTextColor(ContextCompat.getColor(it, R.color.black))
                 }
-            })
+            }
             mAlertDialog.show()
         }
     }
@@ -232,20 +233,20 @@ abstract class MyBaseFragment : Fragment() {
             builder.setTitle(title)
             builder.setMessage(message)
             builder.setPositiveButton(positiveText, listener)
-            builder.setNegativeButton(negativeText,
-                DialogInterface.OnClickListener { dialog, which -> dialog.dismiss() })
+            builder.setNegativeButton(negativeText
+            ) { dialog, which -> dialog.dismiss() }
             val mAlertDialog = builder.create()
             mAlertDialog.setCanceledOnTouchOutside(false)
             mAlertDialog.setCancelable(false)
 
-            mAlertDialog.setOnShowListener({
+            mAlertDialog.setOnShowListener {
                 context?.let {
-                    mAlertDialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
-                        .setTextColor(ContextCompat.getColor(it, R.color.purple_500))
-                    mAlertDialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)
+                    mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                        .setTextColor(ContextCompat.getColor(it, R.color.colorSecondary))
+                    mAlertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)
                         .setTextColor(ContextCompat.getColor(it, R.color.white))
                 }
-            })
+            }
             mAlertDialog.show()
         }
     }

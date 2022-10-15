@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.LocationFragment">
+    <ImageView
+        android:id="@+id/bgIV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/location_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/getCurrentLocationBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/use_your_current_location"
+        android:textAllCaps="false"
+        android:paddingTop="@dimen/size_12x"
+        android:paddingBottom="@dimen/size_12x"
+        android:drawableLeft="@drawable/ic_baseline_my_location_24"
+        app:cornerRadius="@dimen/size_12x"
+        style="@style/TextAppearance.PetNet.Headline6.PoppinsMedium.White"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bgIV" />
+    <TextView
+        android:id="@+id/selectManuallyTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/getCurrentLocationBtn"
+        android:textAlignment="center"
+        style="@style/TextAppearance.PetNet.Headline6.PoppinsMedium"
+        android:layout_marginTop="40dp"
+        android:text="@string/select_it_manually"/>
+    <TextView
+        android:id="@+id/skipForNowTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/TextAppearance.PetNet.Body1.PoppinsSemiBold.Black"
+        android:layout_marginBottom="@dimen/size_12x"
+        android:text="@string/skip_for_now"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

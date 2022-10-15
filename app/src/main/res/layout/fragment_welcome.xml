@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.auth.WelcomeFragment">
+
+    <ImageView
+        android:id="@+id/showImageIV"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_300x"
+        android:layout_marginTop="@dimen/size_56x"
+        android:src="@drawable/ic_undraw_friends_r511"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/titleTV"
+        style="?attr/textAppearanceTitleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_24x"
+        android:text="@string/find_your_best_pet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/showImageIV" />
+    <TextView
+        android:id="@+id/subTitleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/titleTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/your_true_companion_for_life"
+        style="?attr/textAppearanceSubtitle1"
+        />
+    <TextView
+        android:id="@+id/alreadyLoginTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/subTitleTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/size_20x"
+        style="?attr/textAppearanceBody1"
+        android:text="@string/already_have_an_account_log_in"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signInEmailBtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_10x"
+        app:layout_constraintTop_toBottomOf="@id/alreadyLoginTV"
+        style="@style/Widget.PetNet.MaterialButton"
+        android:text="@string/sign_in_with_email"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signInGmailBtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60x"
+        android:layout_marginTop="@dimen/size_10x"
+        app:layout_constraintTop_toBottomOf="@id/signInEmailBtn"
+        style="@style/Widget.PetNet.OutlineMaterialButton"
+        android:drawableLeft="@drawable/ic_google_icon"
+        android:text="@string/sign_in_with_google"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.naestem.petnet">
+    package="com.naestem.petnet" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -12,19 +12,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PetNet">
+        android:theme="@style/Theme.PetNet" >
+        <activity
+            android:name=".ui.views.main.MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.PetNet.NoActionBar" />
+        <activity
+            android:name=".ui.views.auth.AuthActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.views.AddPetActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.views.LocationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.viewmodel.MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main" />
-        <activity
-            android:name=".ui.views.launch.ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ui.views.OtpConfirmationActivity"
@@ -32,19 +36,6 @@
         <activity
             android:name=".ui.views.HomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.views.launch.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.views.launch.SplashActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ui.views.launch.LoginActivity" />
     </application>
 
 </manifest>

@@ -1,21 +1,41 @@
 package com.naestem.petnet.ui.views.fragments
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.naestem.petnet.R
+import androidx.lifecycle.ViewModelProvider
+import com.naestem.petnet.base.views.MyBaseFragment
+import com.naestem.petnet.databinding.FragmentAccountBinding
+import com.naestem.petnet.manager.SharedPrefManager
+import com.naestem.petnet.ui.viewmodel.AccountViewModel
+import com.naestem.petnet.ui.views.auth.LoginFragment
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class AccountFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+class AccountFragment : MyBaseFragment() {
+    lateinit var binding: FragmentAccountBinding
     private var param1: String? = null
     private var param2: String? = null
+    val viewModel by lazy {
+        ViewModelProvider(this)[AccountViewModel::class.java]
+    }
+
+    override fun onErrorCalled(it: String?) {
+        it?.let { error -> showSnackBar(error) }
+    }
+
+    override fun initObservers() {
+        viewModel.logoutSuccess.observe(this) {
+            SharedPrefManager.getInstance(requireContext()).clearPreference()
+            val i = Intent(requireContext(), LoginFragment::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(i)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +48,27 @@ class AccountFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false)
+    ): View {
+        binding = FragmentAccountBinding.inflate(layoutInflater)
+        setUpLoader(viewModel)
+        initView()
+        return binding.root
+    }
+
+    private fun initView() {
+        binding.logoutBtn.setOnClickListener {
+            showConfirmation("Cancel","Ok","Logout","Are you sure?",object:DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    viewModel.logout()
+                }
+
+            })
+
+        }
     }
 
     companion object {
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             AccountFragment().apply {

@@ -14,6 +14,7 @@ class AppConstants {
         const val NA = ""
         const val USER_DATA = "userData"
         const val IS_LOCATION_UPDATED = "isLocationUpdated"
+        const val IS_USER_LOGGED_IN = "isUserLoggedIn"
 
     }
 }

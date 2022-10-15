@@ -80,9 +80,8 @@ class LaunchViewModel(application: Application) : MyBaseViewModel(application) {
         }
     }
 
-    fun checkEmailAndPhoneIsUnique(email: String, phoneNo: String) {
+    fun checkEmailAndPhoneIsUnique(email: String) {
         var emailPresent = true
-        var phoneNoPresent = true
         CoroutineScope(coroutineContext).launch {
             isLoading.postValue(LoaderStatus.loading)
             val emailJob = async {
@@ -90,21 +89,11 @@ class LaunchViewModel(application: Application) : MyBaseViewModel(application) {
                     .child(AppConstants.USER).orderByChild("email").equalTo(email).get().await()
                     .exists()
             }
-            val phoneNoJob = async {
-                phoneNoPresent =
-                    databaseReference.child(AppConstants.BARTER).child(AppConstants.DOC)
-                        .child(AppConstants.USER).orderByChild("phoneNo").equalTo(phoneNo).get()
-                        .await().exists()
-            }
-            phoneNoJob.await()
             emailJob.await()
-            if (!phoneNoPresent && !emailPresent) {
+            if (!emailPresent) {
                 isEmailAndPhoneValidationSuccess.postValue(true)
             } else {
-                if (phoneNoPresent) {
-                    throw Exception("Phone no is already registered")
-
-                } else if (emailPresent) {
+             if (emailPresent) {
                     throw Exception("Email is already registered")
                 }
             }

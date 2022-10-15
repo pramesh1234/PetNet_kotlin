@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 import com.naestem.petnet.adapters.PetListAdapter
 import com.naestem.petnet.base.views.MyBaseFragment
 import com.naestem.petnet.constants.AppConstants
@@ -20,18 +23,18 @@ import com.naestem.petnet.model.AddressModel
 import com.naestem.petnet.ui.viewmodel.HomeViewModel
 import com.naestem.petnet.ui.views.AddPetActivity
 import com.naestem.petnet.utils.JsonUtils
-import kotlinx.coroutines.flow.collect
 
 
 class HomeFragment : MyBaseFragment() {
     private val homeViewModel by lazy {
         ViewModelProvider(this)[HomeViewModel::class.java]
     }
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
     var adapter: PetListAdapter? = null
     val petDataList = ArrayList<AddPetModel>()
     private lateinit var binding: FragmentHomeBinding
     override fun onErrorCalled(it: String?) {
-        it?.let { error -> showSnackbar(error) }
+        it?.let { error -> showSnackBar(error) }
     }
 
     override fun initObservers() {
@@ -58,17 +61,22 @@ class HomeFragment : MyBaseFragment() {
     }
 
     private fun initViews() {
+        firebaseAnalytics = Firebase.analytics
+        firebaseAnalytics.logEvent("start_api") {
+            param(FirebaseAnalytics.Param.ITEM_ID, "22")
+            param(FirebaseAnalytics.Param.ITEM_NAME, "name")
+            param(FirebaseAnalytics.Param.CONTENT_TYPE, "image")
+
+        }
+
         adapter = PetListAdapter(requireContext())
-        binding.petRV.layoutManager = GridLayoutManager(requireContext(),2)
+        binding.petRV.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
         binding.petRV.adapter = adapter
         val address =
             SharedPrefManager.getInstance(requireContext()).getPreference(AppConstants.ADDRESS)
         val addressModel = JsonUtils.parseJson<AddressModel>(address!!)
         binding.location.text = "${addressModel.subLocality}, ${addressModel.city}"
-        binding.addPetBtn.setOnClickListener {
-            val intent = Intent(context, AddPetActivity::class.java)
-            startActivity(intent)
-        }
+
         homeViewModel.getPetImageList()
     }
 

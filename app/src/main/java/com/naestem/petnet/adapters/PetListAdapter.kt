@@ -17,8 +17,10 @@ class PetListAdapter(val context: Context) : RecyclerView.Adapter<PetListAdapter
     inner class PetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val petImage: ImageView = itemView.findViewById(R.id.petImageIV)
         val petName: TextView = itemView.findViewById(R.id.petNameTV)
-        val petType: TextView = itemView.findViewById(R.id.petTypeTV)
+        val petType: TextView = itemView.findViewById(R.id.speciesTV)
         val petLocation: TextView = itemView.findViewById(R.id.petLocationTV)
+        val priceTv: TextView = itemView.findViewById(R.id.priceTV)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
@@ -28,6 +30,7 @@ class PetListAdapter(val context: Context) : RecyclerView.Adapter<PetListAdapter
     override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
         holder.petName.text = petImageList[position].breed
         holder.petType.text = petImageList[position].species
+        holder.priceTv.text = "₹"+petImageList[position].price
         Picasso.get().load(petImageList[position].images?.get(0)).into(holder.petImage)
         holder.petLocation.text =
             "${petImageList[position].location?.subLocality}, ${petImageList[position].location?.city}"
